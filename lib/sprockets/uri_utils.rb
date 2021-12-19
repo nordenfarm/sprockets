@@ -42,8 +42,7 @@ module Sprockets
     #
     # Returns [scheme, host, path, query].
     def split_file_uri(uri)
-      uri.gsub!(' ', '+')
-      scheme, _, host, _, _, path, _, query, _ = URI.split(uri)
+      scheme, _, host, _, _, path, _, query, _ = URI.split(uri.gsub(' ', '+'))
 
       path = URI::Generic::DEFAULT_PARSER.unescape(path)
       path.force_encoding(Encoding::UTF_8)
